@@ -21,6 +21,11 @@
             color: #E5E7EB; /* A light gray for better readability than pure white */
         }
 
+        /* Prevent body scroll when mobile menu is open */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
         /* Glassmorphism Card Style */
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
@@ -121,7 +126,7 @@
             <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-700 rounded-full filter blur-[120px] opacity-10"></div>
             
             <div class="container mx-auto px-6 z-10">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
                     Achieve J-Curve Growth With
                     <br>
                     <span id="dynamic-text" class="animated-gradient-text"></span><span class="blinking-cursor">|</span>
@@ -136,7 +141,7 @@
         </section>
 
         <!-- About Us Section -->
-        <section id="about" class="py-20 md:py-32 fade-in-section">
+        <section id="about" class="py-16 md:py-28 fade-in-section">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">We Are JCurve Labs</h2>
                 <div class="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
@@ -147,7 +152,7 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="py-20 md:py-32 bg-black fade-in-section">
+        <section id="services" class="py-16 md:py-28 bg-black fade-in-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Core Services</h2>
@@ -200,7 +205,7 @@
         </section>
 
         <!-- Why Choose Us Section -->
-        <section id="why-us" class="py-20 md:py-32 fade-in-section">
+        <section id="why-us" class="py-16 md:py-28 fade-in-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">The JCurve Advantage</h2>
@@ -233,7 +238,7 @@
         </section>
 
         <!-- Portfolio/Case Studies Section -->
-        <section id="portfolio" class="py-20 md:py-32 bg-black fade-in-section">
+        <section id="portfolio" class="py-16 md:py-28 bg-black fade-in-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Track Record</h2>
@@ -272,7 +277,7 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="py-20 md:py-32 fade-in-section">
+        <section id="testimonials" class="py-16 md:py-28 fade-in-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
@@ -316,7 +321,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-32 bg-black fade-in-section">
+        <section id="contact" class="py-16 md:py-28 bg-black fade-in-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start Your Growth Curve?</h2>
@@ -435,8 +440,11 @@
         // --- Mobile Menu Toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            body.classList.toggle('no-scroll');
         });
 
         // Close mobile menu when a link is clicked
@@ -444,6 +452,7 @@
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                body.classList.remove('no-scroll');
             });
         });
 
